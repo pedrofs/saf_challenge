@@ -1,3 +1,5 @@
+require 'ostruct'
+
 module SafChallenge
   module Parser
     class Line
@@ -15,9 +17,18 @@ module SafChallenge
         matched = line.match(LINE_REGEX)
 
         raise InvalidLineError if matched.nil?
+
+        build_parsed_line(matched)
       end
 
       private
+
+      def build_parsed_line(matched)
+        OpenStruct.new(quantity: matched[:quantity].to_i,
+                       imported: !matched[:imported].empty?,
+                       description: matched[:description],
+                       cost: matched[:cost].to_f)
+      end
 
       attr_accessor :line
     end
