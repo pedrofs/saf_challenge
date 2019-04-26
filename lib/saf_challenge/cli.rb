@@ -1,15 +1,8 @@
+require "saf_challenge/cli/handle_input"
+
 module SafChallenge
-  class CLI
-    def initialize(argv)
-      @argv = argv
-    end
-
-    def content
-      File.read(argv.first)
-    end
-
-    private
-
-    attr_accessor :argv
+  module CLI
+    class InvalidArgumentError < StandardError; end
+    class FileDoesNotExistError < StandardError; end
   end
 end
