@@ -16,7 +16,7 @@ module SafChallenge
       attr_accessor :content
 
       def parse_line(line)
-        Parser::ParseLine.call(line)
+        Parser::Line.call(line)
       end
     end
   end
