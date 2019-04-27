@@ -26,8 +26,12 @@ module SafChallenge
       def build_parsed_line(matched)
         OpenStruct.new(quantity: matched[:quantity].to_i,
                        imported: !matched[:imported].empty?,
-                       description: matched[:description],
+                       description: description(matched),
                        cost: matched[:cost].to_f)
+      end
+
+      def description(matched)
+        "#{matched[:imported]}#{matched[:description]}"
       end
 
       attr_accessor :line

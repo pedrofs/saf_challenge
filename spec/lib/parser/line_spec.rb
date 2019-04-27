@@ -40,10 +40,10 @@ RSpec.describe SafChallenge::Parser::Line do
       context 'when line is imported' do
         let(:line) { '1 imported music CD at 14.99' }
 
-        describe '.imported' do
-          subject { parse_line.imported }
+        describe '.description' do
+          subject { parse_line.description }
 
-          it { is_expected.to eq(true) }
+          it { is_expected.to eq('imported music CD') }
         end
       end
     end
