@@ -1,4 +1,4 @@
-require "saf_challenge/cli/handle_input"
+require "saf_challenge/cli/from_file"
 
 module SafChallenge
   module CLI

@@ -1,6 +1,6 @@
 module SafChallenge
   module CLI
-    class HandleInput
+    class FromFile
       def self.call(argv = [])
         new(argv).call
       end

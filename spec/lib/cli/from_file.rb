@@ -1,4 +1,4 @@
-RSpec.describe SafChallenge::CLI::HandleInput do
+RSpec.describe SafChallenge::CLI::FromFile do
   describe '#call' do
     context 'when a valid file is passed' do
       subject { described_class.call([File.join('spec', 'fixtures', 'input.txt')]) }
