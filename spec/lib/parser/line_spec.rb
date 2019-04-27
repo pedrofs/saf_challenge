@@ -8,6 +8,14 @@ RSpec.describe SafChallenge::Parser::Line do
       it 'should raise InvalidLine exception' do
         expect { parse_line }.to raise_error(SafChallenge::Parser::InvalidLineError)
       end
+
+      context 'when it is missing quantity' do
+        let(:line) { 'music CD at 14.99' }
+
+        it 'should raise InvalidLine exception' do
+          expect { parse_line }.to raise_error(SafChallenge::Parser::InvalidLineError)
+        end
+      end
     end
 
     context 'when the line is valid' do
