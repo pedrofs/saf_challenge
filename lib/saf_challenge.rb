@@ -35,4 +35,20 @@ module SafChallenge
       @exempt_product_service = SafChallenge::ExemptProductService.new
     end
   end
+
+  class App
+    def run!
+      CLI::Output.call(cart)
+    end
+
+    private
+
+    def cart
+      BuildCart.call(input_content)
+    end
+
+    def input_content
+      CLI::FromFile.call(ARGV)
+    end
+  end
 end
