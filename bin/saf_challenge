@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "saf_challenge"
+
+print SafChallenge::App.new.run!
