@@ -53,6 +53,22 @@ RSpec.describe SafChallenge::Parser::Line do
 
           it { is_expected.to eq('imported music CD') }
         end
+
+        context 'but starts with box' do
+          let(:line) { '3 box of imported chocolates at 11.25' }
+
+          describe '.imported' do
+            subject { parse_line.imported }
+
+            it { is_expected.to eq(true) }
+          end
+
+          describe '.description' do
+            subject { parse_line.description }
+
+            it { is_expected.to eq('box of imported chocolates') }
+          end
+        end
       end
     end
   end
