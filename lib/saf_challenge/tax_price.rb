@@ -9,15 +9,23 @@ module SafChallenge
     end
 
     def call
-      round_to_5_cents(product_cost * tax.fee).round(2)
+      (unit_cost_tax * product_quantity).round(2)
     end
 
     private
 
     attr_reader :tax
 
-    def product_cost
-      tax.product.cost
+    def unit_cost_tax
+      round_to_5_cents(product_unit_cost * tax.fee)
+    end
+
+    def product_unit_cost
+      tax.product.unit_cost
+    end
+
+    def product_quantity
+      tax.product.quantity
     end
 
     def round_to_5_cents(total)

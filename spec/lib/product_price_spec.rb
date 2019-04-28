@@ -3,7 +3,8 @@ require 'ostruct'
 RSpec.describe SafChallenge::ProductPrice do
   describe '#call' do
     let(:cost) { 10.5 }
-    let(:product) { OpenStruct.new(cost: cost, taxes: taxes) }
+    let(:quantity) { 1 }
+    let(:product) { SafChallenge::Product.new(unit_cost: cost, taxes: taxes, quantity: quantity) }
 
     subject { described_class.call(product) }
 
@@ -36,6 +37,14 @@ RSpec.describe SafChallenge::ProductPrice do
       end
 
       it { is_expected.to eq(12.1) }
+    end
+
+    context 'when the product has 3 quantity and needs rounding tax' do
+      let(:cost) { 11.25 }
+      let(:quantity) { 3 }
+      let(:taxes) { [OpenStruct.new(fee: 0.05)] }
+
+      it { is_expected.to eq(35.55) }
     end
   end
 end
