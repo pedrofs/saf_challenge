@@ -1,35 +1,37 @@
 # SafChallenge
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/saf_challenge`. To experiment with that code, run `bin/console` for an interactive prompt.
+A program written for the [SAF challenge](https://gist.github.com/safplatform/792314da6b54346594432f30d5868f36)
 
-TODO: Delete this and the text above, and describe your gem
+It was chosen to write it as a gem due to easy rspec setup.
+
+The program has a executable to allow you to run it from command line.
+
+The program exposes a public API. It means you can use the executable or use the underlying API to run it in a more customizable way. Check `bin/saf_challenge`
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Despite the program is developed as a ruby gem and you can install it using Gemfile basically. It is recommended to clone the repo:
 
-```ruby
-gem 'saf_challenge'
+```
+$ git clone git@github.com:pedrofs/saf_challenge.git
 ```
 
-And then execute:
+And run rake install:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install saf_challenge
+```
+$ rake install
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+$ bin/saf_challenge input.txt
+```
 
-## Development
+## Improvement
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/saf_challenge.
+Currently the executable is not rescuing from these application execeptions:
+```
+SafChallenge::CLI::FromFile::InvalidArgumentError
+SafChallenge::CLI::FromFile::FileDoesNotExistError
+SafChallenge::Parser::Content::EmptyContentError

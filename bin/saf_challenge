@@ -1,4 +1,11 @@
 #!/usr/bin/env ruby
 require "saf_challenge"
 
+# SafChallenge.configure do |config|
+#   config.exempt_product_service = SafChallenge::ExemptProductService.new
+#   config.input_content_strategy = SafChallenge::CLI::FromFile
+# end
+
+# SafChallenge::App.new.cart exposes the cart entity.
+
 print SafChallenge::App.new.run!
