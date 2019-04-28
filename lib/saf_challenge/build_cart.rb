@@ -29,8 +29,8 @@ module SafChallenge
                   taxes: build_taxes(parsed_line))
     end
 
-    def build_taxes
-      BuildTaxes.call(parsed_line)
+    def build_taxes(parsed_line)
+      BuildTaxes.new(SafChallenge.configuration.exempt_product_service).call(parsed_line)
     end
 
     def cart
