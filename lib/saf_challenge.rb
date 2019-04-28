@@ -1,5 +1,6 @@
 require "saf_challenge/version"
 require "saf_challenge/cli/from_file"
+require "saf_challenge/cli/output"
 require "saf_challenge/parser/content"
 require "saf_challenge/parser/line"
 require "saf_challenge/build_cart"
@@ -12,6 +13,9 @@ require "saf_challenge/product"
 require "saf_challenge/taxes/base"
 require "saf_challenge/taxes/basic_sale_tax"
 require "saf_challenge/taxes/imported_tax"
+require "saf_challenge/cart_price"
+require "saf_challenge/cart_taxes_price"
+require "saf_challenge/cart_total_price"
 
 module SafChallenge
   class << self
