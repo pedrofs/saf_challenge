@@ -29,10 +29,11 @@ module SafChallenge
   end
 
   class Configuration
-    attr_accessor :exempt_product_service
+    attr_accessor :exempt_product_service, :input_content_strategy
 
     def initialize
       @exempt_product_service = SafChallenge::ExemptProductService.new
+      @input_content_strategy = CLI::FromFile
     end
   end
 
@@ -41,14 +42,14 @@ module SafChallenge
       CLI::Output.call(cart)
     end
 
-    private
-
     def cart
-      BuildCart.call(input_content)
+      @cart ||= BuildCart.call(input_content)
     end
 
+    private
+
     def input_content
-      CLI::FromFile.call(ARGV)
+      SafChallenge.configuration.input_content_strategy.call(ARGV)
     end
   end
 end
