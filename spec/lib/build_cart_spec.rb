@@ -43,7 +43,7 @@ RSpec.describe SafChallenge::BuildCart do
       let(:content) { "1 imported music CD at 15.00\nbook at 15.00" }
 
       it 'should raise InvalidLine exception' do
-        expect { build_cart }.to raise_error(SafChallenge::Parser::InvalidLineError)
+        expect { build_cart }.to raise_error(SafChallenge::Parser::Line::InvalidLineError)
       end
     end
   end

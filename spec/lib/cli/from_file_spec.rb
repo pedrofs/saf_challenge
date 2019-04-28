@@ -10,7 +10,7 @@ RSpec.describe SafChallenge::CLI::FromFile do
       let(:handle_input) { described_class.call(['file_doesnt_exist.txt']) }
 
       it 'should raise a file doest not exception' do
-        expect { handle_input }.to raise_error(SafChallenge::CLI::FileDoesNotExistError)
+        expect { handle_input }.to raise_error(SafChallenge::CLI::FromFile::FileDoesNotExistError)
       end
     end
 
@@ -18,7 +18,7 @@ RSpec.describe SafChallenge::CLI::FromFile do
       let(:handle_input) { described_class.call }
 
       it 'should raise a invalid arguments exception' do
-        expect { handle_input }.to raise_error(SafChallenge::CLI::InvalidArgumentError)
+        expect { handle_input }.to raise_error(SafChallenge::CLI::FromFile::InvalidArgumentError)
       end
     end
   end

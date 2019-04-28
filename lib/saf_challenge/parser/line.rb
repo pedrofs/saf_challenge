@@ -3,6 +3,8 @@ require 'ostruct'
 module SafChallenge
   module Parser
     class Line
+      class InvalidLineError < StandardError; end
+
       LINE_REGEX = /^(?<quantity>\d*) (?<imported>(imported )?)(?<description>.*) at (?<cost>[0-9]+(\.[0-9]{1,2})?)$/
 
       def self.call(line)

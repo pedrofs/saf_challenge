@@ -1,6 +1,9 @@
 module SafChallenge
   module CLI
     class FromFile
+      class InvalidArgumentError < StandardError; end
+      class FileDoesNotExistError < StandardError; end
+
       def self.call(argv = [])
         new(argv).call
       end
