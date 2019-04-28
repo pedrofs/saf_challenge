@@ -9,7 +9,7 @@ RSpec.describe SafChallenge::TaxPrice do
     let(:tax_value) { 0.1 }
 
     context 'when product cost is well rounded' do
-      let(:product) { OpenStruct.new(cost: 10) }
+      let(:product) { OpenStruct.new(unit_cost: 10, quantity: 1) }
 
       describe '#call' do
         it { is_expected.to eq(1) }
@@ -17,7 +17,7 @@ RSpec.describe SafChallenge::TaxPrice do
     end
 
     context 'when product cost is not well rounded and the tax needs 0.05 rounding' do
-      let(:product) { OpenStruct.new(cost: 10.32) }
+      let(:product) { OpenStruct.new(unit_cost: 10.32, quantity: 1) }
 
       describe '#call' do
         it { is_expected.to eq(1.05) }
