@@ -22,6 +22,16 @@ RSpec.describe SafChallenge::Parser::Content do
 
         it { is_expected.to eq([45.00, 15.00]) }
       end
+
+      context 'when content is empty' do
+        let(:content) { '' }
+
+        subject { described_class.new(content).collect(&:cost) }
+
+        it 'raises error' do
+          expect { subject }.to raise_error(SafChallenge::Parser::Content::EmptyContentError)
+        end
+      end
     end
   end
 end
