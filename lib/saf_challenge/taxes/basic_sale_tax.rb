@@ -1,7 +1,7 @@
 module SafChallenge
   module Taxes
     class BasicSaleTax < Taxes::Base
-      def tax
+      def fee
         0.1
       end
     end

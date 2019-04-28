@@ -1,7 +1,7 @@
 module SafChallenge
   module Taxes
     class ImportedTax < Taxes::Base
-      def tax
+      def fee
         0.05
       end
     end

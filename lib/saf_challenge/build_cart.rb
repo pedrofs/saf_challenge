@@ -25,7 +25,7 @@ module SafChallenge
     def build_product(parsed_line)
       Product.new(quantity: parsed_line.quantity,
                   description: parsed_line.description,
-                  cost: parsed_line.cost,
+                  unit_cost: parsed_line.cost,
                   taxes: build_taxes(parsed_line))
     end
 

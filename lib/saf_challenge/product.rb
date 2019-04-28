@@ -1,26 +1,18 @@
 module SafChallenge
   class Product
-    attr_reader :cost, :quantity, :description, :taxes
+    attr_reader :unit_cost, :quantity, :description, :taxes
 
     def initialize(options = {})
-      @cost = options[:cost]
+      @unit_cost = options[:unit_cost]
       @quantity = options[:quantity]
       @description = options[:description]
-      @taxes = []
+      @taxes = options[:taxes]
 
-      options[:taxes].each { |tax| tax.product = self; @taxes << tax }
+      @taxes.each { |tax| tax.product = self }
     end
 
-    def total_price
-      (price + taxes_price).round(2)
-    end
-
-    def price
-      cost * quantity
-    end
-
-    def taxes_price
-      taxes.collect(&:price).inject(&:+)
+    def cost
+      unit_cost * quantity
     end
   end
 end
